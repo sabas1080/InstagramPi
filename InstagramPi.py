@@ -8,7 +8,7 @@
 #
 #
 # Use text editor to edit the script and type in valid Instagram username/password
-
+import atexit
 import picamera
 import os
 import time
@@ -18,6 +18,7 @@ from os.path import isfile, join
 from random import randint
 from InstagramAPI import InstagramAPI
 
+saveIdx         = -1      # Image index for saving (-1 = none set yet)
 
 # Init camera and set up default values
 camera            = picamera.PiCamera()
@@ -26,11 +27,11 @@ atexit.register(camera.close)
 #camera.crop       = sizeData[sizeMode][2]
 camera.crop       = (0.0, 0.0, 1.0, 1.0)
 
-PhotoPath = "~/igphoto/" # Change Directory to Folder with Pics that you want to upload
-IGUSER    = "IGUsername" # Change to your Instagram USERNAME
+PhotoPath = "/home/pi/images" # Change Directory to Folder with Pics that you want to upload
+IGUSER    = "Xhabas" # Change to your Instagram USERNAME
 PASSWD    = "IGPassword" # Change to your Instagram Password
 # Change to your Photo Hashtag
-IGCaption = "Your Caption Here #hashtag"
+IGCaption = "Hi from Raspberry Pi #PInstagram"
 
 os.chdir(PhotoPath)
 ListFiles = [f for f in listdir(PhotoPath) if isfile(join(PhotoPath, f))]
@@ -40,7 +41,8 @@ print ("Total Photo in this folder:" + str (len(ListFiles)))
 igapi = InstagramAPI(IGUSER,PASSWD)
 igapi.login() # login
 
-filename = PhotoPath + '/IMG_' + '%04d' % saveIdx + '.JPG'
+while True:
+			filename = PhotoPath + '/IMG_' + '%04d' % saveIdx + '.JPG'
 			if not os.path.isfile(filename): break
 			saveIdx += 1
 			if saveIdx > 9999: saveIdx = 0
