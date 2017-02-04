@@ -87,3 +87,7 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+instagram\.txt
+
+\.DS_Store
