@@ -22,21 +22,21 @@
 
 4. Install ffmpeg
 
-```
-git clone https://github.com/FFmpeg/FFmpeg.git
+  ```
+  git clone https://github.com/FFmpeg/FFmpeg.git
 
-cd FFmpeg
+  cd FFmpeg
 
-sudo ./configure --arch=armel --target-os=linux --enable-gpl --enable-libx264 --enable-nonfree
+  sudo ./configure --arch=armel --target-os=linux --enable-gpl --enable-libx264 --enable-nonfree
 
-make
+  make
 
-sudo make install
-```
+  sudo make install
+  ```
 
 5. Camera enabled. Try running 'sudo raspi-config'
 
-`sudo raspi-config`
+  `sudo raspi-config`
 Interfacing Options->Camera->Enable - Yes
 
 6. Reboot
