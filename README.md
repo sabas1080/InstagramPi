@@ -6,6 +6,8 @@
 - Camera Pi v1.3
 - Cable Camera Pi
 
+##Instructions
+
 1. Fork/Clone/Download this repo
 
     `git clone https://github.com/sabas1080/InstagramPi/`
@@ -54,4 +56,13 @@ Interfacing Options->Camera->Enable - Yes
 - Video Circular
 - Filters
 
+
 Andres Sabas @ Feb 2017
+
+
+Contributing to this software is warmly welcomed. You can do this basically by<br>
+[forking](https://help.github.com/articles/fork-a-repo), committing modifications and then [pulling requests](https://help.github.com/articles/using-pull-requests) (follow the links above<br>
+for operating guide). Adding change log and your contact into file header is encouraged.<br>
+Thanks for your contribution.
+
+Enjoy!
