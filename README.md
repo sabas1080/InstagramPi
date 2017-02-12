@@ -1,3 +1,7 @@
+![GafasDemo.jpg](http://i.dailymail.co.uk/i/pix/2012/07/25/article-2178792-14362C90000005DC-659_634x259.jpg)
+
+_image designed by German Markus Gerke_
+
 # InstagramPi
 "Gafas" for Instagram with Raspberry Pi Zero
 
