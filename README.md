@@ -55,8 +55,6 @@ Interfacing Options->Camera->Enable - Yes
 
 
 ##TODO
-
-- Video
 - Video Circular
 - Filters
 
