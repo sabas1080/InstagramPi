@@ -26,7 +26,7 @@ _image designed by German Markus Gerke_
 
     `pip install -r requirements.txt`
 
-4. Install ffmpeg
+4. Install ffmpeg (Mac/Linux) / Windows (Link)[http://ffmpeg.org/download.html]
 
   ```
   git clone https://github.com/FFmpeg/FFmpeg.git
