@@ -25,11 +25,11 @@ buttonTake = 27 # Broadcom pin 17 (P1 pin 11)
 ledPin = 16 # Broadcom pin 17 (P1 pin 11)
 
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(buttonOption, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(buttonTake, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(buttonOption, GPIO.IN, pull_up_down=GPIO.PUD_UP) #Button Selec Option Mode
+GPIO.setup(buttonTake, GPIO.IN, pull_up_down=GPIO.PUD_UP)   #Button init record Video or Take Photo
 
-saveIdx         = -1      # Image index for saving (-1 = none set yet)
-Option          = True
+saveIdx         = -1    # Image index for saving (-1 = none set yet)
+Option          = True  #Option Video(True) or Photo(False)
 
 # Init camera and set up default values
 camera           = picamera.PiCamera()
@@ -50,21 +50,30 @@ IGCaptionVideo = "Hi from Raspberry Pi #PInstagram"
 
 def TakeVideo():
     os.chdir(PhotoPath)
+    #Delete previous videos
     bashCommand = "rm -rf video.h264 video.avi photothumbnail.JPG"
     os.system(bashCommand)
+
     print ("Record Video")
     camera.capture("photothumbnail.JPG", format='jpeg',thumbnail=None)
     camera.start_recording('video.h264' )
     time.sleep(5)
     camera.stop_recording()
-    bashCommand = "ffmpeg -f h264 -i video.h264 -c libx264 -an video.avi -y"
+
+    #Convert video to spectacles effect
+    # Thanks https://github.com/fabe/spectacles-cli/issues/1
+    bashCommand = "ffmpeg -i video.h264 -i overlay.png -map 0:a -filter_complex "scale=-2:720[rescaled];[rescaled]crop=ih:ih:iw/4:0[crop];[crop]overlay=(main_w-overlay_w)/2:(main_h-overlay_h)/2" output.h264"
     os.system(bashCommand)
+    #Convert to format avi
+    bashCommand = "ffmpeg -f h264 -i output.h264 -c libx264 -an video.avi -y"
+    os.system(bashCommand)
+
     print ("Now Uploading this Video to instagram")
     igapi.uploadVideo("video.avi", thumbnail="photothumbnail.JPG", caption=IGCaptionVideo);
     print ("Progress : Done")
-    n = randint(600,1200)
-    print ("Sleep upload for seconds: " + str(n))
-    time.sleep(n)
+    #n = randint(600,1200)
+    #print ("Sleep upload for seconds: " + str(n))
+    #time.sleep(n)
 
 def TakePhoto():
     global saveIdx
@@ -87,9 +96,9 @@ def TakePhoto():
         print ("Now Uploading this photo to instagram: " + photo)
         igapi.uploadPhoto(photo,caption=IGCaption,upload_id=None)
         # sleep for random between 600 - 1200s
-        n = randint(600,1200)
-        print ("Sleep upload for seconds: " + str(n))
-        time.sleep(n)
+        #n = randint(600,1200)
+        #print ("Sleep upload for seconds: " + str(n))
+        #time.sleep(n)
 
 #Start Login and Uploading Photo
 print(PASSWD)
@@ -100,13 +109,13 @@ try:
     while 1:
             if GPIO.input(butTake): # button is released
                 if Option:
-                    TakeVideo()
+                    TakeVideo() #Record Video
                 else:
-                    TakePhoto()
+                    TakePhoto() #Take Photo
             if GPIO.input(butOp):
-                Option=True;
+                Option=True; #Mode Video
             else:
-                Option=False;
+                Option=False; #Mode Photo
 
 
 except KeyboardInterrupt: # If CTRL+C is pressed, exit cleanly:
