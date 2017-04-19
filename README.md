@@ -3,9 +3,11 @@
 _image designed by German Markus Gerke_
 
 # InstagramPi
+
 "Gafas" for Instagram with Raspberry Pi Zero
 
-##Hardware
+## Hardware
+
 - Raspberry Pi Zero v1.3
 - Camera Pi v1.3
 - Cable Camera Pi
@@ -16,7 +18,7 @@ _image designed by German Markus Gerke_
 - Video Circular (Spectacles) [Example](https://www.instagram.com/p/BTFAyHPjp47/?taken-by=xhabas)
 - Filters
 
-##Instructions
+## Instructions
 
 1. Fork/Clone/Download this repo
 
