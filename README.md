@@ -10,6 +10,12 @@ _image designed by German Markus Gerke_
 - Camera Pi v1.3
 - Cable Camera Pi
 
+## Work
+
+- Upload Video and photo Tnstagram
+- Video Circular
+- Filters
+
 ##Instructions
 
 1. Fork/Clone/Download this repo
@@ -52,11 +58,6 @@ Interfacing Options->Camera->Enable - Yes
 8. Run the script (**use text editor to edit the script and type in valid Instagram username/password**)
 
   `python InstagramPi.py`
-
-
-##TODO
-- Video Circular
-- Filters
 
 
 Andres Sabas @ Feb 2017
