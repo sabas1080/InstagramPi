@@ -48,9 +48,12 @@ _image designed by German Markus Gerke_
   sudo make install
   ```
 
-5. Camera enabled. Try running 'sudo raspi-config'
+5. Camera enabled.
+
+Try running 'sudo raspi-config'
 
   `sudo raspi-config`
+
 Interfacing Options->Camera->Enable - Yes
 
 6. Reboot
