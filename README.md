@@ -14,9 +14,9 @@ _image designed by German Markus Gerke_
 
 ## Work
 
-- Upload Video and photo Tnstagram
+- Upload Video and photo Instagram
 - Video Circular (Spectacles) [Example](https://www.instagram.com/p/BTFAyHPjp47/?taken-by=xhabas)
-- Filters
+- Filters of PiCamera
 
 ## Instructions
 
