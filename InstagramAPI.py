@@ -170,7 +170,8 @@ class InstagramAPI:
             upload_job = body['video_upload_urls'][3]['job']
 
             videoData = open(video, 'rb').read()
-            request_size = math.floor(len(videoData) / 4)
+            request_size = int(math.floor(len(videoData) / 4))
+            #request_size = math.floor(len(videoData) / 4)
             lastRequestExtra = (len(videoData) - (request_size * 3))
 
             headers = copy.deepcopy(self.s.headers)
