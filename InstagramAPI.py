@@ -197,7 +197,9 @@ class InstagramAPI:
                                                                         lenVideo=len(videoData)).encode('utf-8')
 
                 self.s.headers.update({'Content-Length': str(end - start), 'Content-Range': content_range, })
-                response = self.s.post(upload_url, data=videoData[start:start + length])
+                response = self.s.post(upload_url, data=videoData[int(start):int(start) + int(length)])
+                #response = self.s.post(upload_url, data=videoData[start:start + length])
+            self.s.headers = headers
             self.s.headers = headers
 
             if response.status_code == 200:
@@ -293,7 +295,7 @@ class InstagramAPI:
         'media_id'     : mediaId
         })
         return self.SendRequest('media/'+ str(mediaId) +'/delete/', self.generateSignature(data))
-   
+
     def changePassword(self, newPassword):
         data = json.dumps({
         '_uuid'        : self.uuid,
@@ -304,7 +306,7 @@ class InstagramAPI:
         'new_password2' : newPassword
         })
         return self.SendRequest('accounts/change_password/', self.generateSignature(data))
-    
+
     def explore(self):
         return self.SendRequest('discover/explore/')
 
@@ -626,7 +628,7 @@ class InstagramAPI:
             except:
                 pass
             return False
-            
+
     def getTotalFollowers(self,usernameId):
         followers = []
         next_max_id = ''
@@ -638,8 +640,8 @@ class InstagramAPI:
                 followers.append(item)
 
             if temp["big_list"] == False:
-                return followers            
-            next_max_id = temp["next_max_id"]         
+                return followers
+            next_max_id = temp["next_max_id"]
 
     def getTotalFollowings(self,usernameId):
         followers = []
@@ -652,8 +654,8 @@ class InstagramAPI:
                 followers.append(item)
 
             if temp["big_list"] == False:
-                return followers            
-            next_max_id = temp["next_max_id"] 
+                return followers
+            next_max_id = temp["next_max_id"]
 
     def getTotalUserFeed(self, usernameId, minTimestamp = None):
         user_feed = []
@@ -668,14 +670,14 @@ class InstagramAPI:
             next_max_id = temp["next_max_id"]
 
     def getTotalSelfUserFeed(self, minTimestamp = None):
-        return self.getTotalUserFeed(self.username_id, minTimestamp) 
-    
+        return self.getTotalUserFeed(self.username_id, minTimestamp)
+
     def getTotalSelfFollowers(self):
         return self.getTotalFollowers(self.username_id)
-    
+
     def getTotalSelfFollowings(self):
         return self.getTotalFollowings(self.username_id)
-        
+
     def getTotalLikedMedia(self,scan_rate = 1):
         next_id = ''
         liked_items = []
