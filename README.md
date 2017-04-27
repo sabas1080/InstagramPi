@@ -34,7 +34,14 @@ _image designed by German Markus Gerke_
 
     `pip install -r requirements.txt`
 
-4. Install ffmpeg (Mac/Linux) / Windows (Link)[http://ffmpeg.org/download.html]
+4. Install ffmpeg for PiZero
+
+```
+  wget https://github.com/ccrisan/motioneye/wiki/precompiled/ffmpeg_3.1.1-1_armhf.deb
+  dpkg -i ffmpeg_3.1.1-1_armhf.deb
+```
+
+5. Install ffmpeg for Pi2/Pi3/Mac/Linux/Windows (Link)[http://ffmpeg.org/download.html]
 
   ```
   git clone https://github.com/FFmpeg/FFmpeg.git
@@ -48,7 +55,7 @@ _image designed by German Markus Gerke_
   sudo make install
   ```
 
-5. Camera enabled.
+6. Camera enabled.
 
 Try running 'sudo raspi-config'
 
@@ -56,11 +63,11 @@ Try running 'sudo raspi-config'
 
 Interfacing Options->Camera->Enable - Yes
 
-6. Reboot
+7. Reboot
 
-7. Modify InstagramPi.py with your own username and password
+8. Modify InstagramPi.py with your own username and password
 
-8. Run the script (**use text editor to edit the script and type in valid Instagram username/password**)
+9. Run the script (**use text editor to edit the script and type in valid Instagram username/password**)
 
   `python InstagramPi.py`
 
