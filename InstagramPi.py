@@ -40,7 +40,7 @@ camera.image_effect = effects[0]
 #camera.crop       = sizeData[sizeMode][2]
 #camera.crop       = (0.0, 0.0, 1.0, 1.0)
 
-PhotoPath = "/home/pi/images" # Change Directory to Folder with Pics that you want to upload
+PhotoPath = "/home/pi/InstagramPi/images" # Change Directory to Folder with Pics that you want to upload
 IGUSER    = "xhabas" # Change to your Instagram USERNAME
 PASSWD    = "" # Change to your Instagram Password
 #INSTAGRAM_FILE_NAME = "instagram.txt"       # Text file to store your password
@@ -99,22 +99,13 @@ def TakePhoto():
 			if saveIdx > 9999: saveIdx = 0
 
     camera.capture(filename, format='jpeg',thumbnail=None)
-    size = (720, 480)
-    mask = Image.new('L', size, 0)
-    draw = ImageDraw.Draw(mask)
-    draw.ellipse((0, 0) + size, fill=255)
-    im = Image.open(filename)
-    output = ImageOps.fit(im, mask.size, centering=(0.5, 0.5))
-    output.putalpha(mask)
-    output.save('output.png')
-
 
     for i in range(len(ListFiles)):
         photo = ListFiles[i]
         print ("Progress :" + str([i+1]) + " of " + str(len(ListFiles)))
         print ("Now Uploading this photo to instagram: " + photo)
         #igapi.uploadPhoto(photo,caption=IGCaption,upload_id=None)
-        igapi.uploadPhoto("output.png",caption=IGCaption,upload_id=None)
+        igapi.uploadPhoto(photo,caption=IGCaption,upload_id=None)
         # sleep for random between 600 - 1200s
         #n = randint(600,1200)
         #print ("Sleep upload for seconds: " + str(n))
